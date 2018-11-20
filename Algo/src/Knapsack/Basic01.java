@@ -38,12 +38,11 @@ public class Basic01 {
 		for(int i=1;i<=n;i++) {
 			int weight = weights[i-1];
 			int value = values[i-1];
-			for(int v=capacity; v>=0; v--) {
-				dp[v] = v < weight ? dp[v] : Math.max(dp[v], dp[v-weight] + value);
+			for(int v=capacity; v>=weight; v--) {
+				dp[v] = Math.max(dp[v], dp[v-weight] + value);
 			}
 		}
 		
 		return dp[capacity];
 	}
-
 }
